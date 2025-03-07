@@ -1,117 +1,121 @@
 .assessment-page {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 2rem;
-  }
-  
-  .header {
-    text-align: center;
-    margin-bottom: 2rem;
-  }
-  
-  .header h1 {
-    color: #2c3e50;
-    margin-bottom: 0.5rem;
-  }
-  
-  .main-content {
-    background-color: #7b5c5c;
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  /* Assessment Form Styles */
-  .assessment-form {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-  }
-  
-  .control-group {
-    display: flex;
-    gap: 1rem;
-    align-items: center;
-  }
-  
-  .control-id {
-    background-color: #f0f0f0;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    font-weight: bold;
-    min-width: 60px;
-    text-align: center;
-  }
-  
-  .question {
-    font-size: 1.1rem;
-    color: #2c3e50;
-    margin-bottom: 0.5rem;
-  }
-  
-  .input-area {
-    width: 100%;
-  }
-  
-  .text-input {
-    width: 100%;
-    padding: 0.8rem;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 1rem;
-  }
-  
-  .file-upload {
-    width: 100%;
-    padding: 1rem;
-    border: 2px dashed #ddd;
-    border-radius: 4px;
-    text-align: center;
-    cursor: pointer;
-    transition: border-color 0.3s ease;
-  }
-  
-  .file-upload:hover {
-    border-color: #2c3e50;
-  }
-  
-  .submit-button {
-    background-color: #3498db;
-    color: white;
-    padding: 1rem 2rem;
-    border: none;
-    border-radius: 4px;
-    font-size: 1.1rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin-top: 2rem;
-    width: 100%;
-    max-width: 200px;
-    align-self: center;
-  }
-  
-  .submit-button:hover {
-    background-color: #2980b9;
-  }
-  
-  .purchase-button {
-    background-color: #27ae60;
-    color: white;
-    padding: 1rem 2rem;
-    border: none;
-    border-radius: 4px;
-    font-size: 1.1rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin-top: 2rem;
-  }
-  
-  .purchase-button:hover {
-    background-color: #219a52;
-  }
-  
-  .footer {
-    text-align: center;
-    margin-top: 2rem;
-    color: #7f8c8d;
-  }
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 4rem 2rem; /* Increase top and bottom padding */
+  background-color: #f8f9fa;
+  min-height: 100vh;
+  box-sizing: border-box; /* Ensure padding is included in height */
+}
+
+.assessment-header {
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+}
+
+.assessment-header h3 {
+  color: #3498db;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.assessment-header h1 {
+  font-size: 2rem;
+  margin: 0;
+  color: #2c3e50;
+}
+
+.assessment-header h2 {
+  font-size: 1.5rem;
+  color: #34495e;
+}
+
+.assessment-main {
+  background: #ffffff;
+  border-radius: 8px;
+  padding: 2rem;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 800px; /* Decrease width of the inner section */
+  margin: 0 auto; /* Center the inner section */
+}
+
+.description-section h3,
+.risk-section h3 {
+  font-weight: bold;
+  color: #2c3e50;
+  margin-bottom: 0.5rem;
+}
+
+.description-section p,
+.risk-section p {
+  color: #7f8c8d;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.input-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.response-input {
+  width: 60%; /* Reduce the width of the textbox */
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  resize: vertical; /* Allow vertical expansion */
+  min-height: 50px; /* Initial height of the input box */
+  transition: width 0.3s ease; /* Smooth expansion for better UX */
+}
+
+.response-input:focus {
+  outline: none;
+  width: 80%; /* Slightly expand width on focus */
+}
+
+.complete-button {
+  background-color: #27ae60;
+  color: white;
+  font-size: 1.2rem;
+  padding: 0.8rem 2rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  align-self: flex-start;
+}
+
+.complete-button:hover {
+  background-color: #219a52;
+}
+
+.confirmation-message {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #48bb78;
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  animation: fadeInOut 3s ease-in-out;
+  z-index: 1000;
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0; transform: translateY(-20px); }
+  10% { opacity: 1; transform: translateY(0); }
+  90% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(-20px); }
+}
+
+.complete-button:disabled {
+  background-color: #a0aec0;
+  cursor: not-allowed;
+}

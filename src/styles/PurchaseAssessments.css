@@ -1,0 +1,142 @@
+.purchase-assessments {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  padding: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: #f8f9fa;
+}
+
+.purchase-assessments h1 {
+  color: #0072CE;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.categories {
+  margin-bottom: 60px;
+}
+
+.categories h2 {
+  color: #2c3e50;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.category {
+  background: white;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.category:hover {
+  transform: translateY(-5px);
+}
+
+.category h3 {
+  color: #0072CE;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.category p {
+  color: #666;
+  margin-bottom: 1.5rem;
+}
+
+.category ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.category li {
+  padding: 0.8rem 0;
+  border-bottom: 1px solid #eee;
+  color: #4a5568;
+}
+
+.category li:last-child {
+  border-bottom: none;
+}
+
+.category li strong {
+  color: #2c3e50;
+  margin-right: 0.5rem;
+}
+
+/* Consultation Section */
+.consultation {
+  background-color: white;
+  padding: 3rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.consultation h2 {
+  color: #0072CE;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.consultation p {
+  color: #666;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.consultation-form {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.consultation-form .full-width {
+  grid-column: 1 / -1;
+}
+
+.consultation-form label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #2c3e50;
+  font-weight: 500;
+}
+
+.consultation-form input,
+.consultation-form select {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.consultation-form input:focus,
+.consultation-form select:focus {
+  outline: none;
+  border-color: #0072CE;
+}
+
+.consultation-form button {
+  grid-column: 1 / -1;
+  padding: 1rem;
+  background-color: #0072CE;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.consultation-form button:hover {
+  background-color: #005ba3;
+}

@@ -1,0 +1,81 @@
+/* General page layout */
+.assessment2-page {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 2rem;
+    background-color: #f8f9fa;
+    min-height: 100vh;
+    box-sizing: border-box;
+  }
+  
+  .assessment2-header {
+    text-align: left;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .assessment2-header h2 {
+    color: #2c3e50;
+    font-weight: bold;
+    font-size: 1rem;
+  }
+  
+  .assessment2-header h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #2c3e50;
+    margin: 0.5rem 0;
+  }
+  
+  .assessment2-header p {
+    font-size: 1rem;
+    color: #7f8c8d;
+  }
+  
+  /* Instructions section */
+  .instructions {
+    background-color: #ffffff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .instructions h3 {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #2c3e50;
+    margin-bottom: 1rem;
+  }
+  
+  .instructions ol {
+    margin: 0;
+    padding-left: 1.5rem;
+    color: #7f8c8d;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+  
+  /* Category buttons */
+  .categories {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .category-button {
+    background-color: #000000;
+    color: #ffffff;
+    font-size: 1rem;
+    padding: 1rem;
+    border: none;
+    border-radius: 8px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .category-button:hover {
+    background-color: #2c3e50;
+  }
+  

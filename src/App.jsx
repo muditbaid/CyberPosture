@@ -1,67 +1,39 @@
-// import { useState } from 'react'
-// import reactLogo from './assets/react.svg'
-// import viteLogo from '/vite.svg'
-// import './App.css'
+import React from "react";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 
-// function App() {
-//   const [count, setCount] = useState(0)
-
-//   return (
-//     <>
-//       <div>
-//         <a href="https://vite.dev" target="_blank">
-//           <img src={viteLogo} className="logo" alt="Vite logo" />
-//         </a>
-//         <a href="https://react.dev" target="_blank">
-//           <img src={reactLogo} className="logo react" alt="React logo" />
-//         </a>
-//       </div>
-//       <h1>Vite + React</h1>
-//       <div className="card">
-//         <button onClick={() => setCount((count) => count + 1)}>
-//           count is {count}
-//         </button>
-//         <p>
-//           Edit <code>src/App.jsx</code> and save to test HMR
-//         </p>
-//       </div>
-//       <p className="read-the-docs">
-//         Click on the Vite and React logos to learn more
-//       </p>
-//     </>
-//   )
-// }
-
-// export default App
-
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+// Components
 import Homepage from "./components/Homepage";
 import Assessment1 from "./components/Assessment1";
-
-// Import Assessment2 when ready
+import Assessment2 from "./components/Assessment2";
+import PurchaseAssessments from "./components/Purchase";
+import LoginPage from "./components/login";
 
 function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Homepage />} />
+        {/* Login Page */}
+        <Route path="/login" element={<LoginPage />} />
+        
+        {/* Homepage */}
+        <Route path="/dashboard" element={<Homepage />} />
+        
+        {/* Assessment Pages */}
         <Route path="/assessment-1" element={<Assessment1 />} />
+        <Route path="/assessment-2" element={<Assessment2 />} />
+        
+        {/* Purchase Assessments */}
+        <Route path="/purchase-assessments" element={<PurchaseAssessments />} />
+
+        {/* Redirect root to login */}
+        <Route path="/" element={<Navigate to="/login" replace />} />
+
+        {/* Fallback Route */}
+        <Route path="*" element={<h1>404 - Page Not Found</h1>} />
       </Routes>
     </Router>
   );
 }
 
 export default App;
-// import React from "react";
-
-// function App() {
-//   return (
-//     <div>
-//       <h1>Hello, React!</h1>
-//     </div>
-//   );
-// }
-
-// export default App;
 
