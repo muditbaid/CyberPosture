@@ -49,15 +49,15 @@ function Homepage() {
         </div>
         <h2 className="sidebar-title">MENU</h2>
         <nav className="sidebar-menu">
-          <a href="#" className="sidebar-item active">Dashboard</a>
+          <Link to="/dashboard" className="sidebar-item active">Dashboard</Link>
           <Link to="/purchase-assessments" className="sidebar-item">Purchase Assessments</Link>
-          <a href="#" className="sidebar-item">Profile</a>
-          <a href="#" className="sidebar-item">Customer Review</a>
+          <Link to="/profile" className="sidebar-item">Profile</Link>
+          <Link to="/customer-review" className="sidebar-item">Customer Review</Link>
           <h2 className="sidebar-title">OTHERS</h2>
-          <a href="#" className="sidebar-item">Settings</a>
-          <a href="#" className="sidebar-item">Payment</a>
-          <a href="#" className="sidebar-item">Accounts</a>
-          <a href="#" className="sidebar-item">Help</a>
+          <Link to="/settings" className="sidebar-item">Settings</Link>
+          <Link to="/payment" className="sidebar-item">Payment</Link>
+          <Link to="/accounts" className="sidebar-item">Accounts</Link>
+          <Link to="/help" className="sidebar-item">Help</Link>
           <button onClick={handleLogout} className="logout-button">Logout</button>
         </nav>
       </aside>

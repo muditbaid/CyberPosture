@@ -1,0 +1,114 @@
+.accounts-container {
+  padding: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.accounts-container h1 {
+  color: #2c3e50;
+  margin-bottom: 2rem;
+}
+
+.accounts-section {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+}
+
+.accounts-section h2 {
+  color: #0072CE;
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+}
+
+.subscription-info {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.plan-details {
+  padding: 1.5rem;
+  background: #f8fafc;
+  border-radius: 8px;
+}
+
+.plan-name {
+  font-size: 1.25rem;
+  color: #2c3e50;
+  margin: 0.5rem 0;
+}
+
+.plan-price {
+  font-size: 2rem;
+  color: #0072CE;
+  font-weight: bold;
+  margin: 1rem 0;
+}
+
+.upgrade-button {
+  background: #0072CE;
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.usage-details {
+  padding: 1.5rem;
+  background: #f8fafc;
+  border-radius: 8px;
+}
+
+.usage-item {
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem 0;
+  color: #4a5568;
+}
+
+.team-members table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+}
+
+.team-members th,
+.team-members td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.team-members th {
+  color: #4a5568;
+  font-weight: 600;
+}
+
+.action-button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  margin-right: 0.5rem;
+  cursor: pointer;
+  background: #0072CE;
+  color: white;
+}
+
+.action-button.delete {
+  background: #e53e3e;
+}
+
+.add-member-button {
+  padding: 1rem;
+  background: #e2e8f0;
+  border: 2px dashed #cbd5e0;
+  border-radius: 8px;
+  color: #4a5568;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 1rem;
+} 

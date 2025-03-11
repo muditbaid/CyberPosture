@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import React, { useState } from "react";
 import { apiService } from "../services/api";
 import "../styles/Assessment.css";
 
@@ -7,24 +6,7 @@ function Assessment1() {
   const [response, setResponse] = useState("");
   const [showConfirmation, setShowConfirmation] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [controlData, setControlData] = useState(null);
   const [error, setError] = useState("");
-  const { controlId } = useParams();
-
-  useEffect(() => {
-    const fetchControlData = async () => {
-      try {
-        const token = localStorage.getItem('token');
-        const assessmentData = await apiService.getControls("assessment-1", token);
-        setControlData(assessmentData);
-      } catch (error) {
-        console.error("Failed to fetch control data:", error);
-        setError("Failed to load control data. Please try again.");
-      }
-    };
-
-    fetchControlData();
-  }, []);
 
   const handleSubmit = async () => {
     if (!response.trim()) {
@@ -36,38 +18,16 @@ function Assessment1() {
     setError("");
     
     try {
-      const token = localStorage.getItem('token');
-      const result = await apiService.submitControlResponse(
-        "assessment-1", 
-        controlId || "23", // Use passed controlId or default
-        { response: response.trim() },
-        token
-      );
+      const result = await apiService.submitControlResponse(response.trim());
 
-      if (result.success) {
-        // Show confirmation message
-        setShowConfirmation(true);
-        setResponse(""); // Clear the response
-        
-        // Update local storage progress
-        const currentProgress = JSON.parse(localStorage.getItem("assessmentProgress")) || {};
-        const updatedProgress = {
-          ...currentProgress,
-          "assessment-1": {
-            ...currentProgress["assessment-1"],
-            lastSubmitted: new Date().toISOString(),
-            controlsCompleted: [...(currentProgress["assessment-1"]?.controlsCompleted || []), controlId]
-          }
-        };
-        localStorage.setItem("assessmentProgress", JSON.stringify(updatedProgress));
-        
-        // Hide confirmation after 3 seconds
-        setTimeout(() => {
-          setShowConfirmation(false);
-        }, 3000);
-      } else {
-        setError(result.message || "Submission failed. Please try again.");
-      }
+      // Show confirmation message
+      setShowConfirmation(true);
+      setResponse(""); // Clear the response
+      
+      // Hide confirmation after 3 seconds
+      setTimeout(() => {
+        setShowConfirmation(false);
+      }, 3000);
     } catch (error) {
       console.error("Submission error:", error);
       setError("Failed to submit response. Please try again.");
@@ -78,10 +38,9 @@ function Assessment1() {
 
   return (
     <div className="assessment-page">
-      {/* Sidebar is assumed to be handled globally */}
       <header className="assessment-header">
         <h3>HIPAA | Regulatory</h3>
-        <h1>Control - {controlId || "23"}</h1>
+        <h1>Control - 23</h1>
         <h2>Security Management Process</h2>
       </header>
 
@@ -89,14 +48,14 @@ function Assessment1() {
         <section className="description-section">
           <h3>Description</h3>
           <p>
-            {controlData?.description || "Conduct risk analysis and risk management processes to identify security risks to PHI."}
+            Conduct risk analysis and risk management processes to identify security risks to PHI.
           </p>
         </section>
 
         <section className="risk-section">
           <h3>Risk</h3>
           <p>
-            {controlData?.risk || "Failure to conduct regular risk analyses and address identified risks can lead to vulnerabilities in PHI security, potentially resulting in breaches and non-compliance."}
+            Failure to conduct regular risk analyses and address identified risks can lead to vulnerabilities in PHI security, potentially resulting in breaches and non-compliance.
           </p>
         </section>
 

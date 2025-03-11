@@ -74,25 +74,15 @@ export const apiService = {
     }
   },
 
-  submitControlResponse: async (assessmentId, controlId, responseData, token) => {
+  submitControlResponse: async (responseText) => {
     try {
-      // First, check if we have all required data
-      if (!assessmentId || !controlId || !responseData.response) {
-        throw new Error('Missing required data');
-      }
-
       const response = await fetch(`${API_BASE_URL}/SubmitResponse`, {
         method: 'POST',
         headers: {
-          'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          assessmentId: assessmentId,
-          controlId: controlId,
-          response: responseData.response,
-          timestamp: new Date().toISOString(), // Add submission timestamp
-          status: 'completed'
+          response: responseText
         }),
       });
 
@@ -101,11 +91,10 @@ export const apiService = {
       }
 
       const data = await response.json();
-      console.log('Submission response:', data); // For debugging
       return data;
     } catch (error) {
       console.error('Submission error:', error);
-      throw new Error('Failed to submit control response: ' + error.message);
+      throw new Error('Failed to submit response');
     }
   },
 }; 

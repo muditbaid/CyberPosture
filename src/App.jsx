@@ -7,6 +7,12 @@ import Assessment1 from "./components/Assessment1";
 import Assessment2 from "./components/Assessment2";
 import PurchaseAssessments from "./components/Purchase";
 import LoginPage from "./components/login";
+import Profile from "./components/Profile";
+import CustomerReview from "./components/CustomerReview";
+import Settings from "./components/Settings";
+import Payment from "./components/Payment";
+import Accounts from "./components/Accounts";
+import Help from "./components/Help";
 
 function App() {
   return (
@@ -25,11 +31,29 @@ function App() {
         {/* Purchase Assessments */}
         <Route path="/purchase-assessments" element={<PurchaseAssessments />} />
 
+        {/* Profile Page */}
+        <Route path="/profile" element={<Profile />} />
+
+        {/* Customer Review */}
+        <Route path="/customer-review" element={<CustomerReview />} />
+
+        {/* Settings Page */}
+        <Route path="/settings" element={<Settings />} />
+
+        {/* Payment Page */}
+        <Route path="/payment" element={<Payment />} />
+
+        {/* Accounts Page */}
+        <Route path="/accounts" element={<Accounts />} />
+
+        {/* Help Page */}
+        <Route path="/help" element={<Help />} />
+
         {/* Redirect root to login */}
         <Route path="/" element={<Navigate to="/login" replace />} />
 
         {/* Fallback Route */}
-        <Route path="*" element={<h1>404 - Page Not Found</h1>} />
+        <Route path="*" element={<Navigate to="/dashboard" replace />} />
       </Routes>
     </Router>
   );
