@@ -12,6 +12,7 @@ const LoginPage = () => {
   const [success, setSuccess] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [socialMessage, setSocialMessage] = useState("");
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -50,6 +51,20 @@ const LoginPage = () => {
     }
   };
 
+  // Mock Google login handler
+  const handleGoogleLogin = () => {
+    setSocialMessage("Google login successful! (mock)");
+    // TODO: Integrate with backend when ready
+    setTimeout(() => setSocialMessage(""), 2000);
+  };
+
+  // Mock Facebook login handler
+  const handleFacebookLogin = () => {
+    setSocialMessage("Facebook login successful! (mock)");
+    // TODO: Integrate with backend when ready
+    setTimeout(() => setSocialMessage(""), 2000);
+  };
+
   return (
     <div className="login-page">
       <div className="login-left"></div>
@@ -59,6 +74,20 @@ const LoginPage = () => {
             <h1>CUSTOMER LOGIN</h1>
           </div>
           
+          {/* Social Login Buttons */}
+          <div className="social-login-section">
+            <button className="google-login-btn" onClick={handleGoogleLogin} aria-label="Sign in with Google">
+              <span className="google-icon">G</span> Sign in with Google
+            </button>
+            <button className="facebook-login-btn" onClick={handleFacebookLogin} aria-label="Sign in with Facebook">
+              <span className="facebook-icon">f</span> Sign in with Facebook
+            </button>
+          </div>
+
+          <div className="divider"><span>or</span></div>
+
+          {socialMessage && <div className="social-message">{socialMessage}</div>}
+
           <form className="login-form" onSubmit={handleLogin}>
             <div className="form-group">
               <label>Are you an:</label>

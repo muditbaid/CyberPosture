@@ -2,47 +2,105 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../styles/Homepage.css";
 
+const ASSESSMENT_INFO = {
+  nist: {
+    name: "NIST",
+    desc: "Evaluates & improves cybersecurity posture with guidelines & metrics.",
+  },
+  pci: {
+    name: "PCI DSS",
+    desc: "Payment Card Industry Data Security Standard to secure credit card transactions.",
+  },
+  iso: {
+    name: "ISO 27001",
+    desc: "Focuses on ensuring organizational information security compliance with ISO standards.",
+  },
+  sox: {
+    name: "SOX",
+    desc: "Sarbanes-Oxley Act compliance for financial reporting.",
+  },
+  hipaa: {
+    name: "HIPAA",
+    desc: "Health Insurance Portability and Accountability Act for healthcare data protection.",
+  },
+  gdpr: {
+    name: "GDPR",
+    desc: "General Data Protection Regulation for data privacy in the EU.",
+  },
+  "cyber-risk": {
+    name: "Cyber Risk Assessments",
+    desc: "Identifying and prioritizing cybersecurity risks within your systems.",
+  },
+  vendor: {
+    name: "Vendor and Third-Party Assessments",
+    desc: "Evaluating the cybersecurity posture of external partners.",
+  },
+  pentest: {
+    name: "Penetration Testing",
+    desc: "Simulated attacks to uncover vulnerabilities in your systems.",
+  },
+  cloud: {
+    name: "Cloud Security Assessments",
+    desc: "Ensuring your cloud environments meet security benchmarks.",
+  },
+};
+
 function Homepage() {
   const navigate = useNavigate();
-  const [assessmentProgress, setAssessmentProgress] = useState(null);
+  const [assessmentProgress, setAssessmentProgress] = useState({});
+  const [purchased, setPurchased] = useState([]);
+  const [randomProgress, setRandomProgress] = useState({});
 
   useEffect(() => {
-    // Retrieve saved progress from local storage
+    // Retrieve saved progress and purchased assessments from local storage
     const savedProgress = localStorage.getItem("assessmentProgress");
     if (savedProgress) {
       setAssessmentProgress(JSON.parse(savedProgress));
     }
+    const purchasedAssessments = localStorage.getItem("purchasedAssessments");
+    if (purchasedAssessments) {
+      setPurchased(JSON.parse(purchasedAssessments));
+    }
   }, []);
 
+  // Generate random progress for in-progress assessments
+  useEffect(() => {
+    const newRandom = {};
+    purchased.forEach((id) => {
+      if (assessmentProgress[id]?.status === "in-progress") {
+        newRandom[id] = Math.floor(Math.random() * 81) + 10; // 10-90%
+      }
+    });
+    setRandomProgress(newRandom);
+  }, [assessmentProgress, purchased]);
+
   const handleStartAssessment = (assessmentId) => {
-    // Get existing progress
     const existingProgress = JSON.parse(localStorage.getItem("assessmentProgress")) || {};
-    // Update progress for the specific assessment
     const updatedProgress = {
       ...existingProgress,
-      [assessmentId]: { status: "in-progress" }
+      [assessmentId]: { status: "in-progress" },
     };
     localStorage.setItem("assessmentProgress", JSON.stringify(updatedProgress));
+    setAssessmentProgress(updatedProgress);
   };
 
   const handleResumeAssessment = (assessmentId) => {
     // Logic to resume the specific assessment
-    console.log(`Resuming Assessment ${assessmentId}`);
-    // Redirect to the saved assessment link if needed
+    // For now, just log or navigate
+    // You can add navigation to a dynamic assessment page here
+    // Example: navigate(`/assessment/${assessmentId}`);
   };
 
   const handleLogout = () => {
-    // Clear user data from localStorage
     localStorage.removeItem('userType');
     localStorage.removeItem('username');
     localStorage.removeItem('assessmentProgress');
-    // Redirect to login page
     navigate('/login');
   };
 
+  // Always show purchased assessments as cards
   return (
     <div className="dashboard-container">
-      {/* Sidebar */}
       <aside className="sidebar">
         <div className="user-greeting">
           <span>Hello, {localStorage.getItem('username') || 'User'}</span>
@@ -61,73 +119,51 @@ function Homepage() {
           <button onClick={handleLogout} className="logout-button">Logout</button>
         </nav>
       </aside>
-
-      {/* Main Content */}
       <div className="main-content">
         <header className="top-bar">
           <h1>CyberPosture Dashboard</h1>
         </header>
-
         <div className="cards-container">
-          {/* NIST Assessment Card */}
-          <div className="assessment-card">
-            <h3>Questionnaire</h3>
-            <h2>NIST</h2>
-            <p>Evaluates & improves cybersecurity posture with guidelines & metrics.</p>
-            <div className="progress-bar">
-              <div className="progress" style={{ width: "78%" }}></div>
+          {purchased.length === 0 && (
+            <div style={{ color: '#888', fontSize: '1.2rem', margin: '2rem auto' }}>
+              No assessments purchased yet. Go to Purchase Assessments to get started.
             </div>
-            <span className="progress-text">78% Controls Completed</span>
-            <div className="button-container">
-              {assessmentProgress?.["assessment-1"] ? (
-                <Link
-                  to="/assessment-1"
-                  className="resume-button"
-                  onClick={() => handleResumeAssessment("assessment-1")}
-                >
-                  Resume
-                </Link>
-              ) : (
-                <Link
-                  to="/assessment-1"
-                  className="start-button"
-                  onClick={() => handleStartAssessment("assessment-1")}
-                >
-                  Start
-                </Link>
-              )}
-            </div>
-          </div>
-
-          {/* ISO Assessment Card */}
-          <div className="assessment-card">
-            <h3>Questionnaire</h3>
-            <h2>ISO</h2>
-            <p>Focuses on ensuring organizational information security compliance with ISO standards.</p>
-            <div className="progress-bar">
-              <div className="progress" style={{ width: "45%" }}></div>
-            </div>
-            <span className="progress-text">45% Controls Completed</span>
-            <div className="button-container">
-              {assessmentProgress?.["assessment-2"] ? (
-                <Link
-                  to="/assessment-2"
-                  className="resume-button"
-                  onClick={() => handleResumeAssessment("assessment-2")}
-                >
-                  Resume
-                </Link>
-              ) : (
-                <Link
-                  to="/assessment-2"
-                  className="start-button"
-                  onClick={() => handleStartAssessment("assessment-2")}
-                >
-                  Start
-                </Link>
-              )}
-            </div>
-          </div>
+          )}
+          {purchased.map((id) => {
+            const info = ASSESSMENT_INFO[id] || { name: id, desc: "Assessment description." };
+            let progress = 0;
+            if (assessmentProgress[id]?.status === "in-progress") {
+              progress = randomProgress[id] || 0;
+            }
+            return (
+              <div className="assessment-card" key={id}>
+                <h3>Questionnaire</h3>
+                <h2>{info.name}</h2>
+                <p>{info.desc}</p>
+                <div className="progress-bar">
+                  <div className="progress" style={{ width: `${progress}%` }}></div>
+                </div>
+                <span className="progress-text">{progress}% Controls Completed</span>
+                <div className="button-container">
+                  {assessmentProgress[id]?.status === "in-progress" ? (
+                    <button
+                      className="resume-button"
+                      onClick={() => handleResumeAssessment(id)}
+                    >
+                      Resume
+                    </button>
+                  ) : (
+                    <button
+                      className="start-button"
+                      onClick={() => handleStartAssessment(id)}
+                    >
+                      Start
+                    </button>
+                  )}
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
     </div>

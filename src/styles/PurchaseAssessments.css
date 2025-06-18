@@ -210,3 +210,197 @@
 .logout-button:hover {
   background-color: #c53030;
 }
+
+/* Assessment Purchase Cards */
+.assessment-cards-row {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
+}
+
+.assessment-purchase-card {
+  background: white;
+  padding: 1.5rem 1.2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.08);
+  width: 260px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  cursor: pointer;
+  transition: box-shadow 0.2s, transform 0.2s;
+  border: 2px solid #e2e8f0;
+  position: relative;
+}
+.assessment-purchase-card:hover {
+  box-shadow: 0 8px 16px rgba(0,0,0,0.13);
+  transform: translateY(-4px) scale(1.03);
+  border-color: #4299e1;
+}
+.assessment-purchase-card.purchased {
+  background: #e6fffa;
+  border-color: #38a169;
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+.assessment-purchase-card h4 {
+  color: #0072CE;
+  margin: 0 0 0.5rem 0;
+  font-size: 1.2rem;
+}
+.assessment-purchase-card p {
+  color: #4a5568;
+  font-size: 0.98rem;
+  margin-bottom: 1.2rem;
+}
+.purchase-btn {
+  background: #4299e1;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.purchase-btn:disabled,
+.assessment-purchase-card.purchased .purchase-btn {
+  background: #38a169;
+  cursor: not-allowed;
+}
+.purchase-confirmation {
+  background: #e6fffa;
+  color: #2c7a7b;
+  border: 1px solid #38a169;
+  border-radius: 8px;
+  padding: 1rem 1.5rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  font-weight: 500;
+  font-size: 1.1rem;
+}
+
+.cart-btn {
+  position: absolute;
+  right: 40px;
+  top: 30px;
+  background: #4299e1;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  padding: 0.7rem 1.5rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  transition: background 0.2s;
+  z-index: 10;
+}
+.cart-btn:hover {
+  background: #2b6cb0;
+}
+
+.cart-modal {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(44, 62, 80, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+.cart-content {
+  background: #fff;
+  border-radius: 16px;
+  padding: 2.5rem 2rem 2rem 2rem;
+  min-width: 350px;
+  max-width: 95vw;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+  position: relative;
+}
+.cart-content h2 {
+  margin-top: 0;
+  color: #0072CE;
+  margin-bottom: 1.5rem;
+}
+.cart-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.5rem 0;
+}
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.7rem 0;
+  border-bottom: 1px solid #e2e8f0;
+}
+.cart-item:last-child {
+  border-bottom: none;
+}
+.remove-cart-btn {
+  background: #e53e3e;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 0.3rem 0.8rem;
+  font-size: 0.95rem;
+  cursor: pointer;
+  margin-left: 1rem;
+  transition: background 0.2s;
+}
+.remove-cart-btn:hover {
+  background: #c53030;
+}
+.cart-total {
+  font-size: 1.15rem;
+  margin: 1.2rem 0 0.7rem 0;
+  text-align: right;
+}
+.cart-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+}
+.buy-all-btn {
+  background: #38a169;
+  color: white;
+  border: none;
+  border-radius: 7px;
+  padding: 0.7rem 1.5rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.buy-all-btn:disabled {
+  background: #a0aec0;
+  cursor: not-allowed;
+}
+.close-cart-btn {
+  background: #4299e1;
+  color: white;
+  border: none;
+  border-radius: 7px;
+  padding: 0.7rem 1.5rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.close-cart-btn:hover {
+  background: #2b6cb0;
+}
+.purchased-btn {
+  background: #38a169 !important;
+  color: white !important;
+  cursor: default !important;
+}
+.assessment-price {
+  font-size: 1.1rem;
+  color: #2d3748;
+  font-weight: 600;
+  margin-bottom: 0.7rem;
+}
