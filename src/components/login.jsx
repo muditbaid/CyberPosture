@@ -90,19 +90,6 @@ const LoginPage = () => {
 
           <form className="login-form" onSubmit={handleLogin}>
             <div className="form-group">
-              <label>Are you an:</label>
-              <select
-                value={userType}
-                onChange={(e) => setUserType(e.target.value)}
-                required
-              >
-                <option value="">Select</option>
-                <option value="assessor">Assessor</option>
-                <option value="assessmentTaker">Assessment Taker</option>
-              </select>
-            </div>
-
-            <div className="form-group">
               <label>Username</label>
               <input
                 type="text"

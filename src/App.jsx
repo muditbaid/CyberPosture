@@ -13,6 +13,7 @@ import Settings from "./components/Settings";
 import Payment from "./components/Payment";
 import Accounts from "./components/Accounts";
 import Help from "./components/Help";
+import HIPAAComplianceAssessment from "./components/HIPAAComplianceAssessment";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
         {/* Assessment Pages */}
         <Route path="/assessment-1" element={<Assessment1 />} />
         <Route path="/assessment-2" element={<Assessment2 />} />
+        <Route path="/hipaa-assessment" element={<HIPAAComplianceAssessment />} />
         
         {/* Purchase Assessments */}
         <Route path="/purchase-assessments" element={<PurchaseAssessments />} />

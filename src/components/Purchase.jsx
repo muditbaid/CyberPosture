@@ -118,7 +118,6 @@ const PurchaseAssessments = () => {
                     >
                       <h4>{a.name}</h4>
                       <p>{a.desc}</p>
-                      <div className="assessment-price">${a.price}</div>
                       {purchased.includes(a.id) ? (
                         <button className="purchase-btn purchased-btn" disabled>Purchased</button>
                       ) : cart.some(item => item.id === a.id) ? (
@@ -144,13 +143,11 @@ const PurchaseAssessments = () => {
                   {cart.map(a => (
                     <li key={a.id} className="cart-item">
                       <span>{a.name}</span>
-                      <span>${a.price}</span>
                       <button className="remove-cart-btn" onClick={() => handleRemoveFromCart(a.id)}>Remove</button>
                     </li>
                   ))}
                 </ul>
               )}
-              <div className="cart-total">Total: <strong>${total}</strong></div>
               <div className="cart-actions">
                 <button className="buy-all-btn" onClick={handleBuyAll} disabled={cart.length === 0}>Buy All</button>
                 <button className="close-cart-btn" onClick={() => setShowCart(false)}>Close</button>

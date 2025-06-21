@@ -82,13 +82,24 @@ function Homepage() {
     };
     localStorage.setItem("assessmentProgress", JSON.stringify(updatedProgress));
     setAssessmentProgress(updatedProgress);
+    
+    // Navigate to specific assessment pages based on assessment ID
+    if (assessmentId === 'hipaa') {
+      navigate('/hipaa-assessment');
+    } else {
+      // For other assessments, you can add more specific routes here
+      console.log(`Starting assessment: ${assessmentId}`);
+    }
   };
 
   const handleResumeAssessment = (assessmentId) => {
-    // Logic to resume the specific assessment
-    // For now, just log or navigate
-    // You can add navigation to a dynamic assessment page here
-    // Example: navigate(`/assessment/${assessmentId}`);
+    // Navigate to specific assessment pages based on assessment ID
+    if (assessmentId === 'hipaa') {
+      navigate('/hipaa-assessment');
+    } else {
+      // For other assessments, you can add more specific routes here
+      console.log(`Resuming assessment: ${assessmentId}`);
+    }
   };
 
   const handleLogout = () => {
@@ -109,6 +120,7 @@ function Homepage() {
         <nav className="sidebar-menu">
           <Link to="/dashboard" className="sidebar-item active">Dashboard</Link>
           <Link to="/purchase-assessments" className="sidebar-item">Purchase Assessments</Link>
+          <Link to="/hipaa-assessment" className="sidebar-item">HIPAA Assessment</Link>
           <Link to="/profile" className="sidebar-item">Profile</Link>
           <Link to="/customer-review" className="sidebar-item">Customer Review</Link>
           <h2 className="sidebar-title">OTHERS</h2>
@@ -137,7 +149,6 @@ function Homepage() {
             }
             return (
               <div className="assessment-card" key={id}>
-                <h3>Questionnaire</h3>
                 <h2>{info.name}</h2>
                 <p>{info.desc}</p>
                 <div className="progress-bar">
